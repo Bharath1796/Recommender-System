@@ -72,9 +72,9 @@ def cor(v):
     r=pearson(num1, num2)
     return(r)
 
-rawData= sc.textFile("/usr/local/spark/mani/100kclus_0_rat.txt").map(lambda x:x.split("\t")).map(lambda x:(x[0],x[1],x[2]))
+rawData= sc.textFile("PATH").map(lambda x:x.split("\t")).map(lambda x:(x[0],x[1],x[2]))
 
-#rawData= sc.textFile("/usr/local/spark/Sugu/spark/SVD/100kclus_4_rat.txt").map(lambda x:x.split("\t")).map(lambda x:(x[0],x[1],x[2]))
+#rawData= sc.textFile("PATH").map(lambda x:x.split("\t")).map(lambda x:(x[0],x[1],x[2]))
 #rawData = raw.sortBy(lambda x:x[3],False)
 	
 Stime = datetime.datetime.now()
