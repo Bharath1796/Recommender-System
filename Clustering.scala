@@ -1,8 +1,8 @@
 
-val movies = sc.textFile("/usr/local/spark/Sugu/Dataset/ml-100k/u.item")
+val movies = sc.textFile("PATH")
 println(movies.first)
 
-val genres = sc.textFile("/usr/local/spark/Sugu/Dataset/ml-100k/u.genre")
+val genres = sc.textFile("PATH")
 genres.take(5).foreach(println)
 
 val genreMap = genres.filter(!_.isEmpty).map(line => line.split("\\|")).map(array => (array(1), array(0))).collectAsMap
@@ -22,7 +22,7 @@ println(titlesAndGenres.first)
 
 import org.apache.spark.mllib.recommendation.ALS
 import org.apache.spark.mllib.recommendation.Rating
-val rawData = sc.textFile("/usr/local/spark/Sugu/Dataset/ml-100k/u.data")
+val rawData = sc.textFile("PATH")
 val rawRatings = rawData.map(_.split("\t").take(3))
 val ratings = rawRatings.map{ case Array(user, movie, rating) => Rating(user.toInt, movie.toInt, rating.toDouble) }
 ratings.cache
